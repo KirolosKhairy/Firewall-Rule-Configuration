@@ -1,158 +1,146 @@
-# Firewall Rule Configuration & Network Access Control (ACL) Implementation
+# Настройка правил межсетевого экранирования и реализация списков контроля доступа (ACL)
 
-## 📘 Project Overview
+## 📘 Обзор проекта
 
-This project focuses on configuring and analyzing **firewall rules** and **Access Control Lists (ACLs)** to enhance network security across different network segments.
+Данный проект посвящён настройке и анализу **правил межсетевого экранирования** и **списков контроля доступа (ACL)** для обеспечения сетевой безопасности на различных уровнях сети.
 
-The work explains:
+В работе рассматриваются:
 
-- How ACLs are used to **filter IP packets** based on:
-  - Source IP address  
-  - Destination IP address  
-  - Protocol type (ICMP, TCP, UDP, etc.)
-- How ACLs are applied on **router interfaces** to allow or block traffic
-- How **MAC-based ACLs** on managed switches can control Layer 2 traffic
-- How ACLs are used on **Cisco ASA 5506-X** firewalls, including:
-  - Standard and extended ACLs
-  - Object groups
-  - Binding ACLs to interfaces
-- How ACLs help **mitigate common network attacks** such as:
-  - Denial of Service (DoS)
-  - IP spoofing
-  - Port scanning and unauthorized access
+- Принципы фильтрации **IP-пакетов** по:
+  - IP-адресу источника  
+  - IP-адресу назначения  
+  - Типу протокола (ICMP, TCP, UDP и др.)
+- Применение ACL на **интерфейсах маршрутизаторов** для разрешения или блокировки трафика  
+- Использование **MAC-ACL** на управляемых коммутаторах для контроля трафика уровня L2  
+- Работа ACL на **межсетевом экране Cisco ASA 5506-X**, включая:
+  - Стандартные и расширенные списки  
+  - Группы объектов  
+  - Привязку ACL к интерфейсам  
+- Использование ACL для защиты от распространённых атак:
+  - DoS  
+  - Спуфинг  
+  - Сканирование портов и несанкционированный доступ  
 
-This repository contains documentation that combines the **theoretical background** with **practical examples** of how ACLs are used to protect modern corporate networks.
-
----
-
-## 🎯 Project Objectives
-
-- Understand the **concept and purpose** of Access Control Lists (ACLs)
-- Learn how to **design and configure** ACLs on routers, switches, and firewalls
-- Demonstrate the role of ACLs in:
-  - Packet filtering
-  - VPN traffic selection
-  - QoS (Quality of Service)
-  - NAT (Network Address Translation)
-- Show how ACLs are used to **implement basic security policies** between:
-  - External network
-  - Internal network
-  - DMZ zone
+Репозиторий содержит документацию, которая сочетает **теоретические материалы** и **практические примеры**, демонстрируя применение ACL в современных корпоративных сетях.
 
 ---
 
-## 📚 Key Topics Covered
+## 🎯 Цели проекта
 
-- IP-based ACLs (IPv4 and IPv6)
-- MAC-based ACLs on managed switches
-- ACE (Access Control Entry) logic and matching
-- Standard vs. extended ACLs
-- Virtual ACLs and default ACLs
-- Permission levels (read, write, execute) in the context of file systems
-- Best practices for implementing ACLs using **security groups**
-- ACL-based mitigation of:
-  - DoS attacks
-  - IP spoofing
-  - Port scanning and unauthorized access
-- ACLs on **Cisco ASA 5506-X**:
-  - ASA CLI basics
-  - ASA ACL specifics (using subnet masks instead of wildcard masks)
-  - Binding ACLs to interfaces
-  - Using object groups with ACLs
-- Overview of:
-  - **Modular Policy Framework (MPF)** on ASA  
-  - **ASDM (Adaptive Security Device Manager)** as a GUI tool for ASA configuration
+- Изучить **концепцию и назначение** списков контроля доступа (ACL)
+- Освоить принципы **проектирования и конфигурации** ACL на маршрутизаторах, коммутаторах и межсетевых экранах
+- Понять роль ACL в:
+  - Пакетной фильтрации  
+  - Выборе трафика для VPN  
+  - QoS (качество обслуживания)  
+  - NAT (трансляция сетевых адресов)
+- Продемонстрировать применение ACL для реализации базовых политик безопасности между:
+  - Внешней сетью  
+  - Внутренней сетью  
+  - DMZ-зоной  
 
 ---
 
-## 🧩 Technologies & Platforms
+## 📚 Основные темы проекта
 
-- Cisco routers and managed switches (conceptual level)
-- Cisco ASA 5506-X firewall
-- IPv4 and IPv6 network protocols
-- MAC-based filtering on Layer 2 switches
-- ASDM (Adaptive Security Device Manager) – GUI for ASA
-- CLI (Command Line Interface) configuration examples
-
----
-
-## 🗂 Project Structure
-
-The project currently includes:
-
-- **`project-documentation`** – main theoretical and practical description of:
-  - Types of ACLs (IP-based, MAC-based, IPv6 ACLs)
-  - Examples of ACE configuration and matching logic
-  - Overview of ASA ACLs and MPF
-  - Explanation of ASDM setup and access requirements
-  - High-level network design from the perspective of:
-    - External network
-    - Internal network
-    - Firewall and DMZ
-
-> Note: When you upload this repository, you can place the main document as `docs/project-report.pdf` or `docs/firewall-acl-report.docx` and link it from this README.
+- ACL на основе IP (IPv4 и IPv6)
+- ACL на основе MAC-адресов
+- Логика ACE (Access Control Entry)
+- Стандартные и расширенные ACL
+- Виртуальные ACL и ACL по умолчанию
+- Уровни разрешений (чтение, запись, выполнение)
+- Лучшие практики использования ACL через **группы безопасности**
+- Защита от DoS-, спуфинг- и сканирующих атак
+- ACL на межсетевых экранах **Cisco ASA 5506-X**:
+  - Основы CLI ASA  
+  - Особенности ACL (сетевые маски вместо wildcard)  
+  - Привязка ACL к интерфейсам  
+  - Группы объектов  
+- Обзор:
+  - **Modular Policy Framework (MPF)**  
+  - **ASDM (Adaptive Security Device Manager)**  
 
 ---
 
-## 🛡 How ACLs Mitigate Attacks
+## 🧩 Используемые технологии и платформы
 
-The documentation explains how ACLs can be used to mitigate several common attack types:
-
-### DoS (Denial of Service) Attacks
-
-- Blocking malicious ICMP floods and abnormal packet patterns  
-- Limiting packet rates to prevent traffic floods
-
-### IP Spoofing
-
-- Filtering unauthorized or untrusted source IP addresses  
-- Ensuring that source IPs match valid internal networks
-
-### Scanning & Hacking Attempts
-
-- Blocking access to sensitive or unused ports  
-- Restricting dangerous or legacy protocols (e.g., Telnet, FTP)  
-- Limiting access to management interfaces and administrative services
-
-### Internet-Facing Threats
-
-- Allowing access only to **public services** (web, mail, etc.)  
-- Blocking all unnecessary traffic to internal network segments  
-- Optionally filtering traffic based on geographic regions
+- Маршрутизаторы и управляемые коммутаторы Cisco
+- Межсетевой экран Cisco ASA 5506-X
+- Протоколы IPv4 и IPv6
+- MAC-фильтрация уровня L2
+- ASDM — графический интерфейс управления ASA
+- Консольные конфигурации CLI
 
 ---
 
-## 🚀 How to Use This Repository
+## 🗂 Структура проекта
 
-1. Clone or download the repository.
-2. Open the documentation file (e.g., `docs/firewall-acl-report.docx` or `.pdf`).
-3. Use the materials to:
-   - Study ACL concepts and examples
-   - Prepare lab configurations on routers, switches, or ASA
-   - Understand best practices for designing firewall policies
+Содержит:
 
-If needed, you can later extend this repository with:
+- **`project-documentation`** — основной файл с описанием:
+  - Виды ACL (IP, MAC, IPv6)
+  - Примеры логики ACE
+  - Особенности ACL в ASA
+  - Настройка MPF
+  - Подготовка ASA и настройка ASDM
+  - Концепция сетевого дизайна: внешняя сеть, внутренняя сеть, DMZ
 
-- Configuration files (`.cfg`)  
-- Sample ASA ACL snippets  
-- Network diagrams (topology, external/internal/DMZ)  
-- Lab manuals or step-by-step configuration guides
+Файл может быть размещён в каталоге `docs/` (например, `docs/firewall-acl-report.docx`).
 
 ---
 
-## 🔭 Possible Future Extensions
+## 🛡 Как ACL предотвращают атаки
 
-- Add real **Cisco IOS** and **ASA CLI** configuration examples
-- Include **GNS3 / EVE-NG** lab topologies
-- Add **packet captures (PCAPs)** to demonstrate ACL effects
-- Provide **step-by-step labs** for:
-  - IPv4 ACL
-  - IPv6 ACL
-  - MAC ACL
-  - ASA ACL + MPF + ASDM
+### Атаки типа DoS
+- Блокировка вредоносных ICMP-флудов  
+- Ограничение скорости прохождения пакетов  
+
+### Спуфинг
+- Фильтрация поддельных или неавторизованных IP  
+- Проверка соответствия IP-адресов внутренним сетям  
+
+### Сканирование и попытки взлома
+- Блокировка доступа к чувствительным портам  
+- Ограничение небезопасных протоколов (Telnet, FTP и др.)  
+- Ограничение доступа к административным интерфейсам  
+
+### Угрозы из Интернета
+- Разрешение доступа только к публичным службам (HTTP/HTTPS, почта)  
+- Блокировка всего лишнего трафика в сторону внутренней сети  
+- Возможность фильтрации по географическим регионам  
 
 ---
 
-## 👤 Author
+## 🚀 Как использовать репозиторий
 
-This project was created as part of a training module on **network security** and **firewall rule configuration**, with a focus on practical application of ACLs in real-world network environments.
+1. Склонировать или скачать репозиторий  
+2. Открыть файл документации  
+3. Использовать материалы для:
+   - изучения ACL,  
+   - выполнения лабораторных работ,  
+   - разработки правил межсетевого экранирования  
+
+Можно расширить проект, добавив:
+
+- Примеры конфигураций CLI  
+- Топологии (GNS3 / EVE-NG)  
+- Диаграммы сети  
+- Пошаговые лабораторные инструкции  
+
+---
+
+## 🔭 Возможные дальнейшие улучшения
+
+- Добавление реальных конфигураций Cisco IOS и ASA  
+- Добавление PCAP-файлов для демонстрации фильтрации  
+- Создание лабораторных сценариев по:
+  - IPv4 ACL  
+  - IPv6 ACL  
+  - MAC ACL  
+  - ASA ACL + MPF + ASDM  
+
+---
+
+## 👤 Автор
+
+Проект выполнен в рамках изучения дисциплины по **сетевой безопасности** и практического применения **ACL** для реализации политик межсетевого экранирования.
